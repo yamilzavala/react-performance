@@ -1,4 +1,5 @@
 import "./App.css";
+import useMousePosition from "./components/hook/useMousePosition";
 import { RenderMousePosition } from "./components/render-props/RenderMouse";
 
 const DisplayMousePos = ({ x, y }: { x: number; y: number }) => (
@@ -13,11 +14,10 @@ const DisplayMousePos = ({ x, y }: { x: number; y: number }) => (
 );
 
 function App() {
+  const {x, y, onMouseMove} = useMousePosition();
   return (
-    <div className="container">
-      <RenderMousePosition>
-        {({ x, y }) => <DisplayMousePos x={x} y={y} />}
-      </RenderMousePosition>
+    <div className="container" onMouseMove={onMouseMove}>      
+        <DisplayMousePos x={x} y={y} />      
     </div>
   );
 }

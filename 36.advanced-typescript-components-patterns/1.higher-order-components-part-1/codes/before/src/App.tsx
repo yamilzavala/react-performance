@@ -1,9 +1,12 @@
 import "./App.css";
-import MousePosition from "./components/position";
+import {DisplayMousePosition} from './components/hoc/DisplayMousePosition'
+import withMouseMove from './components/hoc/withMouseMove'
+//import MousePosition from "./components/position";
 function App() {
+  const Wrapper = withMouseMove(DisplayMousePosition);
   return (
     <div className="container">
-      <MousePosition />
+      <Wrapper />
     </div>
   );
 }
